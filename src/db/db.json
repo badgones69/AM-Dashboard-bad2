@@ -1,0 +1,12 @@
+{
+  "airlines": [
+    {
+      "id": 1,
+      "icao": "XX",
+      "name": "X"
+    }
+  ],
+  "airplanes": [],
+  "airports": [],
+  "routes": []
+}
