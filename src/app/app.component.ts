@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {PageAboutComponent} from "./help/pages/page-about/page-about.component";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,7 @@ export class AppComponent implements OnInit {
   public routeMenuExpanded: boolean = false;
   public helpMenuExpanded: boolean = false;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -50,5 +52,9 @@ export class AppComponent implements OnInit {
 
   helpMenuToogle(): void {
     this.helpMenuExpanded = !this.helpMenuExpanded;
+  }
+
+  openAboutDialog(): void {
+    this.dialog.open(PageAboutComponent);
   }
 }
