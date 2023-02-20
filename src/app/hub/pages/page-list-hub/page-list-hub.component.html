@@ -1,0 +1,50 @@
+<h1 class="listTitle">{{hubListTitle}}</h1>
+
+<table>
+  <tr>
+    <th *ngFor="let header of hubListHeaders">{{header}}</th>
+  </tr>
+  <tr *ngFor="let hub of hubs.slice(currentPageMinIndex - 1, currentPageMaxIndex)">
+    <td class="centerAlignedCell">{{hub.iata}}</td>
+    <td class="centerAlignedCell">{{hub.name}}</td>
+    <td class="centerAlignedCell">{{displayCity(hub)}}</td>
+    <td class="leftAlignedCell"><span
+      class="countryFlag fi fi-{{displayCountryFlag(hub)}}"></span>{{displayCountryName(hub)}}</td>
+    <td class="centerAlignedCell">{{displayRoutesCount(hub)}}</td>
+    <td class="centerAlignedCell">
+      <mat-icon class="iconClickable" (click)="openHubForm(hub)">edit</mat-icon>
+      <mat-icon class="iconClickable" (click)="deleteHub(hub)">delete</mat-icon>
+    </td>
+  </tr>
+</table>
+
+<div id="paginationLabels">
+  <span *ngIf="hubs.length > 0">{{currentPageMinIndex}}-{{currentPageMaxIndex}} / {{hubs.length}} hubs</span>
+  <span *ngIf="hubs.length < 1"> Aucun hub</span>
+  <span>Page {{currentPage}} / {{totalPages}}</span>
+</div>
+
+<div id="paginationButtons">
+  <button mat-button (click)="goToFirstPage()" class="paginationButton" [disabled]="currentPage === 1">
+    <mat-icon>first_page</mat-icon>
+  </button>
+  <button mat-button (click)="rewindFivePages()" class="paginationButton"
+          [disabled]="totalPages < 6 || currentPage < 6">
+    <mat-icon>arrow_back</mat-icon>
+    <span class="paginationButtonTooltip">-5</span>
+  </button>
+  <button mat-button (click)="rewindOnePage()" class="paginationButton" [disabled]="currentPage < 2">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <button mat-button (click)="forwardOnePage()" class="paginationButton" [disabled]="currentPage === totalPages">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+  <button mat-button (click)="forwardFivePages()" class="paginationButton"
+          [disabled]="totalPages < 6 || totalPages - currentPage < 5">
+    <mat-icon>arrow_forward</mat-icon>
+    <span class="paginationButtonTooltip">+5</span>
+  </button>
+  <button mat-button (click)="goToLastPage()" class="paginationButton" [disabled]="currentPage === totalPages">
+    <mat-icon>last_page</mat-icon>
+  </button>
+</div>
