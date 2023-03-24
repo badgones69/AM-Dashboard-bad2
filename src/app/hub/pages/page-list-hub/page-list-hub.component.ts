@@ -3,7 +3,6 @@ import {RouteService} from "../../../shared/services/route.service";
 import {AirportService} from "../../../shared/services/airport.service";
 import {Airport} from "../../../shared/models/airport";
 import {HUB_LIST_TITLE} from "../../../shared/constants/list-constants";
-import {Route} from "../../../shared/models/route";
 import {displayCity, displayCountryFlag, displayCountryName} from "../../../shared/utils/common-utils";
 import {Observable, Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
@@ -27,7 +26,7 @@ export class PageListHubComponent implements OnInit, OnDestroy {
   // List data
   public hubs: Airport[] = [];
 
-  private routes$!: Observable<Route[]>;
+  private routes$!: Observable<any[]>;
 
   public currentPageMinIndex!: number;
   public currentPageMaxIndex!: number;
@@ -70,10 +69,11 @@ export class PageListHubComponent implements OnInit, OnDestroy {
 
   // Routes count display
   displayRoutesCount(hub: Airport): number {
+    let routesCount = 0;
     this.routes$.pipe(takeUntil(this.unsubscriber)).subscribe(routes => {
-      return routes.filter(r => r.departureHub.id === hub.id).length;
+      routesCount = routes.filter(r => r.departureHub.id === hub.id).length;
     });
-    return 0;
+    return routesCount;
   }
 
   openHubForm(hub: Airport) {

@@ -33,7 +33,7 @@ export class AirportService {
   }
 
   public getHubs(): Observable<Airport[]> {
-    return this.http.get<Airport[]>(`${AIRPORT_SERVICE_URL}?hub=true`);
+    return this.http.get<Airport[]>(`${AIRPORT_SERVICE_URL}/hubs`);
   }
 
   public getAirport(id: number): Observable<any> {

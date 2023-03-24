@@ -201,7 +201,7 @@ export class HubFormComponent implements OnInit, OnDestroy {
 
   // Custom country display (by name)
   displayCountryByName(country: Country): string {
-    return displayCountryName(country.id);
+    return country ? displayCountryName(country.id) : '';
   }
 
   // Custom region display (by name)

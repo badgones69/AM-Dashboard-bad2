@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 
 import {AirlineService} from './airline.service';
 import {HttpClientTestingModule, HttpTestingController, TestRequest} from "@angular/common/http/testing";
-import dbJson from "../../../db/db.json";
+import {Airline} from "../models/airline";
 import {HTTP_GET_REQUEST} from "../constants/services-constants";
 
 describe('AirlineService', () => {
@@ -17,6 +17,12 @@ describe('AirlineService', () => {
     expect(service).toBeTruthy();
   });
   it('#getAirline should return \'X\' airline', (done) => {
+    const airlineToFind: Airline = {
+      id: 1,
+      icao: 'XX',
+      name: 'X'
+    };
+
     service.getAirline(1).subscribe(airline => {
       expect(airline.icao).toEqual('XX');
       expect(airline.name).toEqual('X');
@@ -24,6 +30,6 @@ describe('AirlineService', () => {
     });
 
     const req: TestRequest = httpTestingController.expectOne(request => request.method === HTTP_GET_REQUEST);
-    req.flush(dbJson.airlines[0]);
+    req.flush(airlineToFind);
   });
 });
