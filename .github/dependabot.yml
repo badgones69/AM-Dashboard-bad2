@@ -10,12 +10,12 @@ updates:
     schedule:
       interval: "daily"
       "time": "04:00"
-      groups:
-       # Specify a name for the group, which will be used in pull request titles
-       # and branch names
-       dependencies:
-          # Define patterns to include dependencies in the group (based on
-          # dependency name)
-          applies-to: version-updates # Applies the group rule to version updates
-          patterns:
-            - "*"       # A wildcard that matches all dependencies in the package
+    groups:
+     # Specify a name for the group, which will be used in pull request titles
+     # and branch names
+     dependencies:
+        # Define patterns to include dependencies in the group (based on
+        # dependency name)
+        applies-to: version-updates # Applies the group rule to version updates
+        patterns:
+          - "*"       # A wildcard that matches all dependencies in the package
