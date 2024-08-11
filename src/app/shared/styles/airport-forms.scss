@@ -1,0 +1,29 @@
+#iataFormField, #nameFormField, #cityFormField {
+  width: 458px !important;
+}
+
+#countryFormField, #regionFormField {
+  width: 430px !important;
+}
+
+.flagsList {
+  margin-right: 5px;
+
+  img {
+    height: 14px;
+    width: 18.66px;
+  }
+}
+
+.flagElementSelected {
+  margin-right: 10px;
+}
+
+#flagRegionSelected {
+  width: 430px !important;
+
+  img {
+    height: 14px;
+    width: 18.66px;
+  }
+}

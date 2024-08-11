@@ -1,0 +1,92 @@
+.formTitle {
+  font-size: 70px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.formInputLabel {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+input, mat-slide-toggle {
+  font-size: 15px;
+
+}
+
+mat-form-field {
+  margin-bottom: 10px;
+}
+
+mat-error {
+  color: #BD362F;
+  background-color: white;
+  padding: 1px 3px;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+}
+
+::ng-deep .mat-focused .mat-form-field-label .mat-form-field-required-marker, ::ng-deep.mat-form-field-required-marker {
+  color: white !important;
+}
+
+::ng-deep.mat-form-field-underline, ::ng-deep.mat-form-field-ripple {
+  background-color: white !important;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: white;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: white;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.formButtons {
+  margin-top: 50px;
+}
+
+.formButton {
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid white;
+  color: white;
+  font-weight: bold;
+}
+
+.validFormButton {
+  background-color: green;
+  margin-right: 300px;
+}
+
+.validFormButton:hover {
+  background-color: white;
+  cursor: pointer;
+  color: green;
+}
+
+.validFormButton:disabled {
+  background-color: gray;
+}
+
+.validFormButton:disabled:hover {
+  color: white;
+  cursor: not-allowed;
+}
+
+.resetFormButton {
+  background-color: #BD362F;
+}
+
+.resetFormButton:hover {
+  background-color: white;
+  cursor: pointer;
+  color: #BD362F;
+}

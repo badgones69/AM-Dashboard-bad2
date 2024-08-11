@@ -1,0 +1,5 @@
+<app-dialog [dialogTitle]="aboutDialogTitle" [dialogMode]="aboutDialogMode">
+  <span>{{appName}} v{{appVersion}}</span>
+  <div class="property" *ngFor="let property of properties">{{property.name}} : {{property.value}}</div>
+  <div>Auteur : {{appAuthor}}<span id="authorCountryFlag" class="fi fi-fr"></span></div>
+</app-dialog>

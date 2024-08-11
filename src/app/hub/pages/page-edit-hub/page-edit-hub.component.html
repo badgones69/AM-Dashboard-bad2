@@ -1,0 +1,2 @@
+<app-page-hub-form *ngIf="hubAirport$ | async as hubAirport" (submitted)="editHub($event)" [formMode]="formMode"
+                   [hubAirport]="hubAirport"></app-page-hub-form>

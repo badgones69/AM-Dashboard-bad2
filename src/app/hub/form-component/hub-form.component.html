@@ -1,0 +1,80 @@
+<h1 class="formTitle">{{hubFormTitle}}</h1>
+
+<form [formGroup]="hubForm" (ngSubmit)="submitHubForm()">
+  <div>
+    <mat-form-field id="iataFormField" appearance="standard">
+      <mat-label class="formInputLabel">IATA</mat-label>
+      <input matInput placeholder="XXX" formControlName="iata">
+      <mat-error *ngIf="this.hubForm?.get(iataFieldIdentifier)?.invalid">{{displayIATAErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field id="nameFormField" appearance="standard">
+      <mat-label class="formInputLabel">NOM</mat-label>
+      <input matInput formControlName="name">
+      <mat-error *ngIf="this.hubForm?.get(nameFieldIdentifier)?.invalid">{{displayNameErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-slide-toggle
+      *ngIf=" this.hubForm?.get(nameFieldIdentifier)?.value && this.hubForm?.get(nameFieldIdentifier)?.valid"
+      color="primary" (change)="cityIncludedInName = !cityIncludedInName">
+      ville incluse dans le nom
+    </mat-slide-toggle>
+  </div>
+
+  <div>
+    <mat-form-field id="cityFormField" appearance="standard">
+      <mat-label class="formInputLabel">VILLE</mat-label>
+      <input placeholder="villes multiples à séparer par une virgule puis un espace" matInput formControlName="city">
+      <mat-error *ngIf="this.hubForm?.get(cityFieldIdentifier)?.invalid">{{displayCityErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-slide-toggle color="primary" [checked]="characteristicsCaseRespected"
+                      (change)="characteristicsCaseRespected = !characteristicsCaseRespected">
+      respecter la casse pour le nom et/ou la ville
+    </mat-slide-toggle>
+  </div>
+
+  <div>
+    <span class="flagElementSelected fi fi-{{flagAirportCountry}}"></span>
+    <mat-form-field id="countryFormField" appearance="standard">
+      <mat-label class="formInputLabel">PAYS</mat-label>
+      <input matInput [matAutocomplete]="auto" formControlName="countryId">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayCountryByName"
+                        (optionSelected)="addCountryListener($event.option.value)">
+        <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+          <span class="fi fi-{{country.isoAlpha2}} flagsList"></span> {{country.name}}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="this.hubForm?.get(countryFieldIdentifier)?.invalid">{{displayCountryErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="countrySelectedHasRegions">
+    <span id="flagRegionSelected" class="flagElementSelected">
+      <img [src]="flagAirportRegion">
+    </span>
+    <mat-form-field id="regionFormField" appearance="standard">
+      <mat-label class="formInputLabel">ÉTAT / PROVINCE</mat-label>
+      <input matInput [matAutocomplete]="auto" formControlName="regionId">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayRegionByName">
+        <mat-option *ngFor="let region of filteredRegions | async" [value]="region">
+          <span class="flagsList">
+            <img src="assets/regions-flag/{{this.flagAirportCountry}}/{{region.isoAlpha2}}.svg">
+          </span> {{region.name}} ({{region.isoAlpha2}})
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="this.hubForm?.get(regionFieldIdentifier)?.invalid">{{displayRegionErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="formButtons">
+    <button [disabled]="hubForm.invalid" type="submit" class="formButton validFormButton">Enregistrer</button>
+    <button type="button" class="formButton resetFormButton" (click)="ngOnInit()">Réinitialiser</button>
+  </div>
+</form>

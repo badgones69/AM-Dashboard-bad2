@@ -1,0 +1,13 @@
+<div *ngIf="!isConfirmationDialog" class="closeButton">
+  <button *ngIf="!isConfirmationDialog" type="button" (click)="closeDialog()">X</button>
+</div>
+<div class="dialog">
+  <h1>{{dialogTitle}}{{isConfirmationDialog ? ' : confirmation' : ''}}</h1>
+  <div>
+    <ng-content></ng-content>
+  </div>
+  <div *ngIf="isConfirmationDialog" class="dialogButtons">
+    <button type="button" class="dialogButton yesDialogButton" (click)="yes()">Oui</button>
+    <button type="button" class="dialogButton noDialogButton" (click)="closeDialog()">Non</button>
+  </div>
+</div>

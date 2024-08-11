@@ -1,0 +1,112 @@
+.listTitle {
+  font-size: 70px;
+  font-weight: bold;
+  margin-bottom: 75px;
+  text-align: center;
+}
+
+table {
+  background-color: #3C91B0;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th {
+  background-color: black;
+  color: white;
+  font-size: 18px;
+}
+
+tr {
+  background-color: #3C91B0;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+th, td {
+  padding: 10px 15px;
+  border: 2px solid white;
+}
+
+td > .iconClickable:hover {
+  cursor: pointer;
+}
+
+td mat-icon + mat-icon {
+  padding-left: 20px;
+}
+
+.centerAlignedCell {
+  text-align: center;
+}
+
+.leftAlignedCell {
+  text-align: left;
+}
+
+.countryFlag {
+  margin-right: 10px;
+}
+
+#paginationLabels {
+  display: flex;
+  justify-content: space-between;
+}
+
+#paginationLabels > span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#paginationButtons {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.paginationButton {
+  background: #3C91B0;
+  color: white;
+  border: 0;
+  padding: 0 5px;
+  margin-left: 20px;
+
+  mat-icon {
+    font-size: 30px;
+  }
+}
+
+.paginationButtonTooltip {
+  visibility: hidden;
+  width: auto;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+.paginationButton:hover {
+  cursor: pointer;
+  background: white;
+  color: #3C91B0;
+
+  .paginationButtonTooltip {
+    visibility: visible;
+  }
+}
+
+.paginationButton:disabled {
+  background: #3C91B0;
+  color: white;
+
+  .paginationButtonTooltip {
+    visibility: hidden;
+  }
+}
+
+.paginationButton:disabled:hover {
+  cursor: not-allowed;
+}
